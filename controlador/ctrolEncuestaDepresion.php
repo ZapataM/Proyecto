@@ -77,24 +77,24 @@ function listarDepresion(){
             <span class= "table-remove"><button onclick="consultarDepresion('.$key['codUsuarios'].') type="button" class="btn btn-warning btn-rounded btn-sm my-0">Cargar</button></span>
             </td>
 
-            <td><span class= "table-remove"><button onclick="eliminarEmocional('.$key['codUsuarios'].') type="button" class="btn btn-danger btn-rounded btn-sm my-0">Eliminar</button></span>
+            <td><span class= "table-remove"><button onclick="eliminarDepresion('.$key['codUsuarios'].') type="button" class="btn btn-danger btn-rounded btn-sm my-0">Eliminar</button></span>
             </td>
         </tr>';
     } 
 }
 
-// function eliminar(){
-//     $connection = new PDODB();
-//     $connection->connect();
-//     $codUsuario = $_POST['codUsuario'];
-//     $sql = "DELETE FROM registro_usuarios WHERE codUsuario =".$codUsuario;
-//     $eliminado = $connection->executeInstruction($sql);
-//     $if($eliminado){
-//         echo "Eliminado correctamente";
-//     }else{
-//         echo"No fue eliminado";
-//         }
-// }
+function eliminarDepresion(){
+    $connection = new PDODB();
+    $connection->connect();
+    $codUsuario = $_POST['codUsuario'];
+    $sql = "DELETE FROM encuesta_depresion WHERE codUsuarios =".$codUsuario;
+    $eliminado = $connection->executeInstruction($sql);
+    if ($eliminado){
+        echo "Eliminado correctamente";
+    }else{
+        echo"No fue eliminado";
+        }
+}
 
 function consultarDepresion(){
     $connection = new PDODB();

@@ -66,18 +66,12 @@
             <div class="row">
                <div class="col">
                   <div class="card-group">
-                     <input class="btn btn-info" type="button" value="Enviar" onclick="guardarDepresion()">
+                     <input class="btn btn-info"  type="button" value="Enviar" onclick="guardarDepresion()">
+                     <input class="btn btn-info" style="position: absolute;right: 83%;" type="button" value="Volver" onclick="cargar('FormUsuarios.php')">
                   </div>
                </div>
             </div>
-            <br>
-            <div class="row">
-               <div class="col">
-                  <div class="card-group">
-                     <input class="btn btn-secondary" type="button" value="Volver" onclick="cargar('FormUsuarios.php')">
-                  </div>
-               </div>
-            </div>
+            
 
             <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -111,5 +105,19 @@
     $( document ).ready(function() {
         listarDepresion();
     });
+    function eliminarDepresion(codU) {
+      $.ajax ({
+        data: {
+          "codUsuario" : codU,
+          "metodo" : "e"
+        },
+        url: '../../controlador/ctrolEncuestaDepresion.php',
+        type: 'post',
+        success: function (response) {
+          alert(response);
+          listarDepresion();
+        }
+      });
+    }
     </script>
 

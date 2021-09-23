@@ -175,7 +175,7 @@ function modificarRegistro(){
     $documento = $_POST['documento'];
     $fechaNC = $_POST['fechadeNC'];
     $correo = $_POST['correo'];
-    $sql = "UPDATE registro_usuarios SET Nombres='".$nombres"', Apellidos='".$apellidos"', Genero='".$genero"', num_documento='".$documento"', FechadeNacimineto='".$fechaNC"', CorreoElectonico='".$correo"' WHERE codUsuario='".$codUsuario"'";
+    $sql = "UPDATE registro_usuarios SET Nombres='".$nombres"', Apellidos='".$apellidos"', Genero='".$genero"', numero_documento='".$documento"', FechadeNacimiento='".$fechaNC"', CorreoElectonico='".$correo"' WHERE codUsuario='".$codUsuario"'";
     
     $modificado = $connection->executeInstruction($sql);
     if($modificado){

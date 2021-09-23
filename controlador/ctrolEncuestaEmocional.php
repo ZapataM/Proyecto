@@ -13,7 +13,7 @@ switch ($metodo) {
             modificarEmocional();
             break;
         case 'e':
-            eliminar();
+            eliminarEmocional();
             break;
         case 'l':   
             listarEmocional();
@@ -42,24 +42,24 @@ function guardarEmocional() {
     }
 }
 
-function modificarEmocional(){
-   $connection = new PDODB();
-   $connection->connect();
-   $estado_animo = $_POST['estado_animo'];
-   $preocupaciones = $_POST['preocupaciones'];
-   $toma_decisiones = $_POST['toma_decisiones'];
-   $concentracion = $_POST['concentracion'];
-   $emocionesysentir = $_POST['emocionesysentir'];
-   $satisfaccion_ser = $_POST['satisfaccion_ser'];
-   $sql = "UPDATE encuesta_emocional SET estado_animo='".$estado_animo"', preocupaciones='".$preocupaciones"', toma_decisiones='".$toma_decisiones"', concentracion='".$concentracion"', emocionesysentir='".$emocionesysentir"', satisfaccion_ser='".$satisfaccion_ser"' WHERE codUsuario='".$codUsuario"'";
+// function modificarEmocional(){
+//    $connection = new PDODB();
+//    $connection->connect();
+//    $estado_animo = $_POST['estado_animo'];
+//    $preocupaciones = $_POST['preocupaciones'];
+//    $toma_decisiones = $_POST['toma_decisiones'];
+//    $concentracion = $_POST['concentracion'];
+//    $emocionesysentir = $_POST['emocionesysentir'];
+//    $satisfaccion_ser = $_POST['satisfaccion_ser'];
+//    $sql = "UPDATE encuesta_emocional SET estado_animo='".$estado_animo"', preocupaciones='".$preocupaciones"', toma_decisiones='".$toma_decisiones"', concentracion='".$concentracion"', emocionesysentir='".$emocionesysentir"', satisfaccion_ser='".$satisfaccion_ser"' WHERE codUsuario='".$codUsuario"'";
   
-                                    $modificado = $connection->executeInstruction($sql);
-                                    if($modificado){
-                                        echo "Modificado correctamente.";
-                                    }else{
-                                        echo "No se pudo modificar.";
-                                    }
-}
+//                                   $modificado = $connection->executeInstruction($sql);
+//                                     if($modificado){
+//                                         echo "Modificado correctamente.";
+//                                     }else{
+//                                         echo "No se pudo modificar.";
+//                                     }
+// }
 
 function listarEmocional(){
     $connection = new PDODB();
@@ -172,5 +172,20 @@ function consultarEmocional(){
     }
     echo $formHtml;
 }
+
+function eliminarEmocional() {
+    $connection = new PDODB();
+    $connection->connect();
+    $codUsuario = $_POST['codUsuario'];
+    $sql = "DELETE FROM encuesta_emocional WHERE codUsuario =".$codUsuario;
+    $eliminado = $connection->executeInstruction($sql);
+    if($eliminado){
+        echo "Eliminado correctamente";
+    }else{
+        echo"No fue eliminado";
+        }
+}
+
+
 
 ?>

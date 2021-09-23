@@ -17,6 +17,8 @@
             <th>Concentración</th>
             <th>Emociones y Sentir</th>
             <th>Satisfacción</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tfoot>
@@ -37,16 +39,27 @@
     <br>
 </div>
 
-   <script>
+  <script>
     $( document ).ready(function() {
         listarEmocional();
     });
-    </script>
+    function eliminarEmocional(codU) {
+   $.ajax ({
+     data: {
+       "codUsuario" : codU,
+       "metodo" : "e"
+     },
+     url: '../../controlador/ctrolEncuestaEmocional.php',
+     type: 'post',
+     success: function (response) {
+       alert(response);
+       listarEmocional();
+       }
+      });
+    }
+  </script>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalModificar">
-  Clic aquí para que salga el modal :)
-</button>
+
 <!-- Modal -->
 <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

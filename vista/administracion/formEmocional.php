@@ -64,12 +64,55 @@
                      <div class="col">
                         <div class="card-group">
                            <input class="btn btn-info"  type="button" value="Enviar" onclick="guardarEmocional()">
-                           <input class="btn btn-info" style="position: absolute;right: 87%;" type="button" value="Volver" onclick="cargar('FormUsuarios.php')">
+                           <input class="btn btn-info" style="position: absolute;right: 83%;" type="button" value="Volver" onclick="cargar('FormUsuarios.php')">
                         </div>
                      </div>
                   </div>
                </div>
       </form>
    </div>
+
+   <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>CodUsuario</th>
+            <th>Estado de ánimo</th>
+            <th>Preocupaciones</th>
+            <th>Toma de decisiones</th>
+            <th>Concentración</th>
+            <th>Emociones y Sentir</th>
+            <th>Satisfacción</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody>
+          
+        </tbody>
+      </table>
+   </div>
+
+   <script>
+    $( document ).ready(function() {
+        listarEmocional();
+    });
+    function eliminarEmocional(codU) {
+   $.ajax ({
+     data: {
+       "codUsuario" : codU,
+       "metodo" : "e"
+     },
+     url: '../../controlador/ctrolEncuestaEmocional.php',
+     type: 'post',
+     success: function (response) {
+       alert(response);
+       listarEmocional();
+     }
+   });
+ }
+    </script>
 
 

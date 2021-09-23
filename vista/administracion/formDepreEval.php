@@ -16,6 +16,8 @@
             <th>nerviosismo</th>
             <th>pesimismo</th>
             <th>inseguridad</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
           </tr>
 
         </thead>
@@ -37,9 +39,23 @@
     <br>
 </div>
 
-   <script>
+  <script>
     $( document ).ready(function() {
         listarDepresion();
     });
-    </script>
+    function eliminarDepresion(codU) {
+      $.ajax ({
+        data: {
+          "codUsuario" : codU,
+          "metodo" : "e"
+        },
+        url: '../../controlador/ctrolEncuestaDepresion.php',
+        type: 'post',
+        success: function (response) {
+          alert(response);
+          listarDepresion();
+        }
+      });
+    }
+  </script>
 
